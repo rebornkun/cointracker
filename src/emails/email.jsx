@@ -60,7 +60,14 @@ export const VercelInviteUserEmail = ({
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
             <Section className="mt-[32px]">
               <Img
-                src={`${baseUrl}/static/cointracker.png`}
+                src={`${baseUrl}/static/media/cointracker.png`}
+                width="40"
+                height="37"
+                alt="Vercel"
+                className="my-0 mx-auto"
+              />
+              <Img
+                src={`${baseUrl}/_next/static/media/cointracker.bcd67864.png`}
                 width="40"
                 height="37"
                 alt="Vercel"
