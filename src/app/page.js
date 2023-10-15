@@ -11,7 +11,7 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json",
       },
-      border: {}
+      body: {},
     });
     console.log(res);
   };
