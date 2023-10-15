@@ -31,7 +31,7 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
-import { Img } from '@react-email/img';
+// import { Img } from '@react-email/img';
 import * as React from "react";
 
 const baseUrl = process.env.VERCEL_URL
