@@ -31,6 +31,7 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
+import { Img } from '@react-email/img';
 import * as React from "react";
 
 const baseUrl = process.env.VERCEL_URL
@@ -59,12 +60,13 @@ export const VercelInviteUserEmail = ({
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
             <Section className="mt-[32px]">
               <Img
-                src={`${baseUrl}/static/vercel-logo.png`}
+                src={`${baseUrl}/static/media/cointracker.bcd67864.png`}
                 width="40"
                 height="37"
                 alt="Vercel"
                 className="my-0 mx-auto"
               />
+              {/* <Img src="cat.jpg" alt="Cat" width="300" height="300" /> */}
             </Section>
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
               Join <strong>{teamName}</strong> on <strong>Vercel</strong>
