@@ -3,7 +3,6 @@
 import Navbar from "../components/Navbar";
 import { ContextProvider } from "../context/AppContext";
 import { Button, Form, Input } from "antd";
-import Image from "next/image";
 
 export default function Home() {
   return (
