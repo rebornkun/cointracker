@@ -1,0 +1,44 @@
+.ant-btn.btnn {
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+.ant-btn.btnn:hover {
+  background-color: rgba(255, 255, 255, 0.884) !important;
+  color: blue !important;
+}
+
+.navone {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.navtwo {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.navthree {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.navone.open {
+  transform: rotate(45deg) translate(4px, 5px);
+  transform-origin: center bottom;
+}
+.navtwo.open {
+  opacity: 0;
+}
+.navthree.open {
+  transform: rotate(-45deg) translate(4px, -5px);
+  transform-origin: center top;
+}

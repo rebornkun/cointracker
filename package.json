@@ -6,15 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev --dir src/emails --port 3001"
   },
   "dependencies": {
     "@react-email/button": "0.0.10",
+    "@react-email/components": "^0.0.7",
     "@react-email/hr": "^0.0.5",
     "@react-email/html": "0.0.4",
     "@react-email/img": "^0.0.5",
     "@react-email/render": "0.0.7",
+    "@react-email/tailwind": "0.0.9",
     "@react-email/text": "^0.0.5",
+    "antd": "^5.10.0",
+    "firebase": "^10.5.0",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",

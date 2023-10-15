@@ -1,4 +1,4 @@
-// import MyTemplate from "@/emails/email";
+import { VercelInviteUserEmail } from "../../../emails/email";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 // import nodemailer from "nodemailer";
@@ -12,13 +12,11 @@ export async function POST(req, res) {
       from: "Hello <hello@transfergo.cc>",
       to: "oluyohokiemute@gmail.com",
       subject: "Hello world",
-      text: "hello",
+      react: <VercelInviteUserEmail />,
     });
 
     return NextResponse.json({ data });
-    // res.status(200).json(data);
   } catch (error) {
-    return NextResponse.json({ status: 400 });
-    // res.status(400).json(error);
+    return NextResponse.json({ error });
   }
 }
