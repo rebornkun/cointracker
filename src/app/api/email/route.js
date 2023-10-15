@@ -5,7 +5,7 @@ import { Resend } from "resend";
 
 const resend = new Resend("re_YMtbz1Jg_A2f1Q36qvJNAwQZ8xLSLbcKr");
 
-export async function GET(req, res) {
+export async function POST(req, res) {
   console.log(process.env.RESEND_API_KEY);
   try {
     const data = await resend.emails.send({

@@ -7,10 +7,11 @@ export default function Home() {
   const resend = new Resend("re_YMtbz1Jg_A2f1Q36qvJNAwQZ8xLSLbcKr");
   const sendEmail = async () => {
     const res = await fetch("/api/email", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      border: {}
     });
     console.log(res);
   };
