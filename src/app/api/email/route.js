@@ -9,8 +9,8 @@ export async function GET(req, res) {
   console.log(process.env.RESEND_API_KEY);
   try {
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "delivered@resend.dev",
+      from: "Hello <hello@transfergo.cc>",
+      to: "oluyohokiemute@gmail.com",
       subject: "Hello world",
       text: "hello",
     });
