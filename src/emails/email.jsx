@@ -42,7 +42,7 @@ export const VercelInviteUserEmail = ({
   username = "zenorocha",
   userImage = `${baseUrl}/static/vercel-user.png`,
   invitedByUsername = "bukinoshita",
-  invitedByEmail = "bukinoshita@example.com",
+  companyEmail = "xtbmarketio@gamil.com",
   teamName = "My Project",
   teamImage = `${baseUrl}/static/vercel-team.png`,
   inviteLink = "https://vercel.com/teams/invite/foo",
@@ -57,89 +57,75 @@ export const VercelInviteUserEmail = ({
       <Preview>{previewText}</Preview>
       <Tailwind>
         <Body className="bg-white my-auto mx-auto font-sans">
-          <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
-            <Section className="mt-[32px]">
-              <Img
-                src={`${baseUrl}/_next/static/media/cointracker.bcd67864.png`}
-                width="200"
-                height="50"
-                alt="Vercel"
-                className="my-0 mx-auto"
-              />
-            </Section>
+          <Section className="mt-[32px]">
+            <Img
+              src={`${baseUrl}/assets/img/blue_tracker.png`}
+              width="160"
+              height="40"
+              alt="Vercel"
+              className="my-0 mx-auto"
+            />
+          </Section>
+          <Container className="border border-solid border-[#eaeaea] rounded my-[20px] mx-auto p-[20px] w-[465px]">
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
               1 new transaction detetcted
             </Heading>
             <Text className="text-black text-[14px] leading-[24px]">
-              we have detected 1 new transaction in your wallets and exchanges...
+              we have detected 1 new transaction in your wallets and
+              exchanges...
             </Text>
-            <Text className="text-black text-[14px] leading-[24px]">
-              <strong>bukinoshita</strong> (
-              <Link
-                href={`mailto:${invitedByEmail}`}
-                className="text-blue-600 no-underline"
-              >
-                {invitedByEmail}
-              </Link>
-              ) has invited you to the <strong>{teamName}</strong> team on{" "}
-              <strong>Vercel</strong>.
-            </Text>
-            <Section>
-              <Row>
-                <Column align="right">
-                  <Img
-                    className="rounded-full"
-                    src={userImage}
-                    width="64"
-                    height="64"
-                  />
-                </Column>
-                <Column align="center">
-                  <Img
-                    src={`${baseUrl}/static/vercel-arrow.png`}
-                    width="12"
-                    height="9"
-                    alt="invited you to"
-                  />
-                </Column>
-                <Column align="left">
-                  <Img
-                    className="rounded-full"
-                    src={teamImage}
-                    width="64"
-                    height="64"
-                  />
-                </Column>
-              </Row>
-            </Section>
+            <ul>
+              <li>
+                <Text style={paragraph}>
+                  {" "}
+                  Recieved 1.96BTC in BTC Wallet ...sfdfsefesfsefsef
+                </Text>
+              </li>
+            </ul>
             <Section className="text-center mt-[32px] mb-[32px]">
               <Button
                 pX={20}
-                pY={12}
-                className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center"
+                pY={18}
+                className="bg-[#0182ff] rounded text-[#fff] text-[16px] font-semibold no-underline text-center"
                 href={inviteLink}
               >
-                Join the team
+                Connect wallets & exchanges
               </Button>
             </Section>
-            <Text className="text-black text-[14px] leading-[24px]">
-              or copy and paste this URL into your browser:{" "}
-              <Link href={inviteLink} className="text-blue-600 no-underline">
-                {inviteLink}
-              </Link>
-            </Text>
+            <Section className="w-full text-start mb-[32px] p-0">
+              <Text className="text-black text-[14px] leading-[24px]">
+                <span className="text-[#666666]">For enquiries contact:</span>
+                <br></br>
+                <Link
+                  href={`mailto:${"companyEmail"}`}
+                  className="text-blue-600 no-underline"
+                >
+                  {companyEmail}
+                </Link>{" "}
+                Thanks. <br></br>
+                The CoinTracker Team.
+              </Text>
+            </Section>
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
-            <Text className="text-[#666666] text-[12px] leading-[24px]">
-              This invitation was intended for{" "}
-              <span className="text-black">{username} </span>.This invite was
-              sent from <span className="text-black">{inviteFromIp}</span>{" "}
-              located in{" "}
-              <span className="text-black">{inviteFromLocation}</span>. If you
-              were not expecting this invitation, you can ignore this email. If
-              you are concerned about your account's safety, please reply to
-              this email to get in touch with us.
-            </Text>
           </Container>
+          <Section className="w-full flex flex-row justify-center items-center mb-[32px] gap-4">
+            <Row>
+              <Img
+                src={`${baseUrl}/assets/img/x.png`}
+                width="30"
+                height="30"
+                alt="x"
+                className="my-0 mx-auto"
+              />
+              <Img
+                src={`${baseUrl}/assets/img/youtube.png`}
+                width="30"
+                height="30"
+                alt="youtube"
+                className="my-0 mx-auto"
+              />
+            </Row>
+          </Section>
         </Body>
       </Tailwind>
     </Html>
@@ -147,6 +133,13 @@ export const VercelInviteUserEmail = ({
 };
 
 export default VercelInviteUserEmail;
+
+const paragraph = {
+  fontSize: "16px",
+  lineHeight: "21px",
+  color: "#3c3f44",
+};
+
 // export function Email(props) {
 //   const { url } = props;
 
