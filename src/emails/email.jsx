@@ -60,33 +60,18 @@ export const VercelInviteUserEmail = ({
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
             <Section className="mt-[32px]">
               <Img
-                src={`${baseUrl}/static/media/cointracker.png`}
-                width="40"
-                height="37"
-                alt="Vercel"
-                className="my-0 mx-auto"
-              />
-              <Img
                 src={`${baseUrl}/_next/static/media/cointracker.bcd67864.png`}
-                width="40"
-                height="37"
+                width="200"
+                height="50"
                 alt="Vercel"
                 className="my-0 mx-auto"
               />
-              <Img
-                src={`${baseUrl}/static/google.png`}
-                width="40"
-                height="37"
-                alt="Vercell"
-                className="my-0 mx-auto"
-              />
-              {/* <Img src="cat.jpg" alt="Cat" width="300" height="300" /> */}
             </Section>
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
-              Join <strong>{teamName}</strong> on <strong>Vercel</strong>
+              1 new transaction detetcted
             </Heading>
             <Text className="text-black text-[14px] leading-[24px]">
-              Hello {username},
+              we have detected 1 new transaction in your wallets and exchanges...
             </Text>
             <Text className="text-black text-[14px] leading-[24px]">
               <strong>bukinoshita</strong> (
