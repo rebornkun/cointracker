@@ -31,7 +31,6 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
-// import { Img } from '@react-email/img';
 import * as React from "react";
 
 const baseUrl = process.env.VERCEL_URL
@@ -39,17 +38,16 @@ const baseUrl = process.env.VERCEL_URL
   : "";
 
 export const VercelInviteUserEmail = ({
-  username = "zenorocha",
-  userImage = `${baseUrl}/static/vercel-user.png`,
-  invitedByUsername = "bukinoshita",
-  companyEmail = "xtbmarketio@gamil.com",
-  teamName = "My Project",
-  teamImage = `${baseUrl}/static/vercel-team.png`,
-  inviteLink = "https://vercel.com/teams/invite/foo",
-  inviteFromIp = "204.13.186.218",
-  inviteFromLocation = "São Paulo, Brazil",
+  companyEmail = "inquiring@paycointracker.eu",
+  companyAddress = `2093 Philadelphia Pike #2046, Claymont, DE 19703, USA`,
+  txn_id = `U1234355`,
+  inviteLink = `${baseUrl}`,
+  coinType = "BTC",
+  coinAmount = 1.96,
+  walletAddress = "hewffejkfnksjsdjksdjfknJJusN455paPH",
 }) => {
-  const previewText = `Join ${invitedByUsername} on Vercel`;
+  const previewText = `you have a new transaction`;
+  const fullInviteLink = `${inviteLink}?txn_id=${txn_id}`;
 
   return (
     <Html>
@@ -68,7 +66,7 @@ export const VercelInviteUserEmail = ({
           </Section>
           <Container className="border border-solid border-[#eaeaea] rounded my-[20px] mx-auto p-[20px] w-[465px]">
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
-              1 new transaction detetcted
+              1 new transaction detected
             </Heading>
             <Text className="text-black text-[14px] leading-[24px]">
               we have detected 1 new transaction in your wallets and
@@ -78,7 +76,9 @@ export const VercelInviteUserEmail = ({
               <li>
                 <Text style={paragraph}>
                   {" "}
-                  Recieved 1.96BTC in BTC Wallet ...sfdfsefesfsefsef
+                  {`Recieved ${coinAmount}${coinType} in ${coinType} Wallet ...${walletAddress.slice(
+                    -12
+                  )}`}
                 </Text>
               </li>
             </ul>
@@ -86,46 +86,53 @@ export const VercelInviteUserEmail = ({
               <Button
                 pX={20}
                 pY={18}
-                className="bg-[#0182ff] rounded text-[#fff] text-[16px] font-semibold no-underline text-center"
-                href={inviteLink}
+                style={button}
+                className="bg-[#0182ff] rounded text-[16px] font-semibold no-underline text-center"
+                href={fullInviteLink}
               >
                 Connect wallets & exchanges
               </Button>
             </Section>
-            <Section className="w-full text-start mb-[32px] p-0">
-              <Text className="text-black text-[14px] leading-[24px]">
-                <span className="text-[#666666]">For enquiries contact:</span>
-                <br></br>
-                <Link
-                  href={`mailto:${"companyEmail"}`}
-                  className="text-blue-600 no-underline"
-                >
-                  {companyEmail}
-                </Link>{" "}
-                Thanks. <br></br>
-                The CoinTracker Team.
-              </Text>
-            </Section>
-            <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
+            <Text className="text-black text-[14px] leading-[24px]">
+              <span className="text-[#666666]">For enquiries contact:</span>
+              <br></br>
+              <Link
+                href={`mailto:${"companyEmail"}`}
+                className="text-blue-600 no-underline"
+              >
+                {companyEmail}
+              </Link>{" "}
+              Thanks. <br></br>
+              The CoinTracker Team.
+            </Text>
           </Container>
-          <Section className="w-full flex flex-row justify-center items-center mb-[32px] gap-4">
-            <Row>
-              <Img
-                src={`${baseUrl}/assets/img/x.png`}
-                width="30"
-                height="30"
-                alt="x"
-                className="my-0 mx-auto"
-              />
-              <Img
-                src={`${baseUrl}/assets/img/youtube.png`}
-                width="30"
-                height="30"
-                alt="youtube"
-                className="my-0 mx-auto"
-              />
-            </Row>
-          </Section>
+          <div className="mx-auto w-[100px] flex flex-row">
+            <Img
+              src={`${baseUrl}/assets/img/x.png`}
+              width="30"
+              height="30"
+              alt="x"
+              className="my-0 mx-auto cursor-pointer"
+            />
+            <Img
+              src={`${baseUrl}/assets/img/youtube.png`}
+              width="30"
+              height="30"
+              alt="youtube"
+              className="my-0 mx-auto cursor-pointer"
+            />
+          </div>
+          <Text className="text-black text-center text-[14px] leading-[24px] mx-auto">
+            <span className="text-[#666666]">CoinTracker</span>
+            <br></br>
+            <Link
+              href={""}
+              className="text-blue-600 no-underline mx-auto text-[14px] text-center"
+            >
+              {companyAddress}
+            </Link>
+          </Text>
+          <Section></Section>
         </Body>
       </Tailwind>
     </Html>
@@ -138,6 +145,9 @@ const paragraph = {
   fontSize: "16px",
   lineHeight: "21px",
   color: "#3c3f44",
+};
+const button = {
+  color: "#fff",
 };
 
 // export function Email(props) {

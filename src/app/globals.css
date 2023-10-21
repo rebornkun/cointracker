@@ -50,6 +50,9 @@ button.ant-btn {
   font-family: "Poppins", sans-serif !important;
   height: inherit;
 }
+button.ant-btn.pro {
+  padding: 15px 15px;
+}
 
 .text-center {
 }

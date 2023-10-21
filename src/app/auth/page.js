@@ -34,7 +34,6 @@ const GoogleIcon = () => {
         values.email,
         values.password
       );
-      console.log(auther);
       const { user } = auther;
       //check if user is new
       const docRef = doc(db, "Users", user.uid);
@@ -50,6 +49,9 @@ const GoogleIcon = () => {
           emailVerified: user.emailVerified,
           metadata: user.reloadUserInfo,
           isUserNew: true,
+          private_keys: [],
+          tax_codes: [],
+          gas_codes: []
         });
       }
 

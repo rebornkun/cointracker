@@ -41,7 +41,7 @@ class Notification {
       type: "error",
       icon: <CancelSvg className="errorIcon" />,
       key,
-      duration: 100,
+      duration: 5,
       ...props,
     });
   }

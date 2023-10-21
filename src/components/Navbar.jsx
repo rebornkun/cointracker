@@ -71,7 +71,7 @@ const Navbar = () => {
       </div>
       <div
         style={{
-          height: isOpen ? "170px" : "0px",
+          height: isOpen ? "200px" : "0px",
           transition: "all 0.3s ease-in-out",
         }}
         className={`flex flex-col h-full gap-4 overflow-hidden`}
@@ -89,10 +89,10 @@ const Navbar = () => {
               Send Email
             </p>
           </Link>
-          <Link href="/admin/private_key">
+          <Link href="/admin/private-key">
             <p
               style={
-                path === "/admin/private_key"
+                path === "/admin/private-key"
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }
@@ -101,10 +101,22 @@ const Navbar = () => {
               Generate Private Key
             </p>
           </Link>
-          <Link href="/admin/tax_code">
+          <Link href="/admin/gas-fee-code">
             <p
               style={
-                path === "/admin/tax_code"
+                path === "/admin/gas-fee-code"
+                  ? { fontWeight: "600", color: "gold", borderColor: "gold" }
+                  : {}
+              }
+              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+            >
+              Generate Gas Code
+            </p>
+          </Link>
+          <Link href="/admin/tax-code">
+            <p
+              style={
+                path === "/admin/tax-code"
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }

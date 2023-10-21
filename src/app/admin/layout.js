@@ -1,14 +1,20 @@
+'use client'
+
 import Navbar from "../../components/Navbar";
-import { ContextProvider } from "../../context/AppContext";
+import { ContextProvider, useAppContext } from "../../context/AppContext";
+import { useEffect } from "react";
 
 const layout = ({ children }) => {
+   const { getUserData } = useAppContext()
+
+   useEffect(() => {
+    getUserData()
+  },[])
   return (
-    <ContextProvider>
       <div className="h-full w-full flex flex-col">
         <Navbar />
         {children}
       </div>
-    </ContextProvider>
   );
 };
 

@@ -5,33 +5,58 @@ import { useState } from "react";
 // import MyTemplate from "@/emails/email";
 import { Resend } from "resend";
 import { render } from "@react-email/render";
+import { useAppContext } from "../../context/AppContext";
+import Notification from "../../components/Notification";
 
 export default function Admin() {
   const [isLoading, setIsLoading] = useState(false);
-  // const resend = new Resend("re_c2DVvNT7_5P1DEhRrgLQ2WjRguFjQRxzy");
-  const resend = new Resend("re_YMtbz1Jg_A2f1Q36qvJNAwQZ8xLSLbcKr");
+  const { createTransaction } = useAppContext()
+  
 
-  // console.log(html);
+  const generateTransactionId = () => {
+    return "u" + new Date().getTime();
+  };
   const onFinish = async (values) => {
-    // console.log("Success:", values);
     setIsLoading(true);
+    const txn_id = generateTransactionId();
+    const createTransactionRes = await createTransaction(values, txn_id)
     const res = await fetch("/api/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: {}
+      body: JSON.stringify({
+        txn_id: txn_id,
+        email: values?.email,
+        wallet: values?.wallet,
+        coin_type: values?.coin_type,
+        coin_value: values?.coin_value,
+        coin_value_money: values?.coin_value_money,
+      }),
     });
+
+    if (res.status === 200) {
+      Notification.displayInfo({
+        message: "Success",
+        description: 'Email Sent',
+      });
+    } else {
+      Notification.displayInfo({
+        message: "Error",
+        description: statusText,
+      });
+    }
+    console.log(res);
 
     setIsLoading(false);
   };
 
   return (
-    <div className="flex-auto w-full flex flex-col container mx-auto px-4 justify-center items-center">
+    <div className="flex-auto w-full flex flex-col container mx-auto p-4 justify-center items-center">
       <div className="bg-white border-[1px] border-grey max-w-[500px] w-full min-h-[300px] h-fit rounded-[15px] shadow p-4">
         <h1 className="text-[1.5rem] text-black font-bold mb-2">Send Mail</h1>
         <Form
-          name="email"
+          name="Form"
           className={"w-full flex flex-col gap-4"}
           onFinish={onFinish}
           // onFinishFailed={onFinishFailed}
