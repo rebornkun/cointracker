@@ -11,14 +11,15 @@ const poppins = Poppins({
 export const metadata = {
   title: "Cointracker",
   description:
-    "CoinTracker is the most trusted Bitcoin tax software and crypto portfolio manager. Automatically connect Coinbase, Binance, and all other exchanges & wallets.",
+    "CoinTracker is the most trusted Bitcoin tax software and crypto portfolio manager. Automatically connect Coinbase, Binance, and all other exchanges & wallets",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="">
-        <ContextProvider>{children}</ContextProvider></body>
+        <ContextProvider>{children}</ContextProvider>
+      </body>
     </html>
   );
 }

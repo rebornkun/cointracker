@@ -214,13 +214,11 @@ export default function Home() {
             Transaction awaiting clearance...
           </h1>
           <p className="mt-2 text-grey text-[0.8rem] text-light">
-              you will receive a mail shortly!
-            </p>
+            you will receive a mail shortly!
+          </p>
         </div>
       )}
-      {!transactionData?.step &&
-      <div className="flex-auto"></div>
-      }
+      {!transactionData?.step && <div className="flex-auto"></div>}
 
       <div className="flex flex-row justify-center my-10 text-center">
         <p className="text-[0.8rem]">
