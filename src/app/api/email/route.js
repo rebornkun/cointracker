@@ -9,7 +9,7 @@ export async function POST(request) {
   const req = await request.json();
   try {
     const data = await resend.emails.send({
-      from: `${req?.txn_id} <${process.env.NEXT_PUBLIC_EMAIL_ADDRESS}>`,
+      from: `Cointracker <${process.env.NEXT_PUBLIC_EMAIL_ADDRESS}>`,
       to: req?.email,
       subject: "CoinTracker Transaction Notification",
       react: (
