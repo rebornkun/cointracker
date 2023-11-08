@@ -38,7 +38,7 @@ const baseUrl = process.env.VERCEL_URL
   : "";
 
 export const VercelInviteUserEmail = ({
-  companyEmail = "inquiring@paycointracker.eu",
+  companyEmail = "inquiring@cointracker.ws",
   companyAddress = `2093 Philadelphia Pike #2046, Claymont, DE 19703, USA`,
   txn_id = `U1234355`,
   inviteLink = `${baseUrl}`,
@@ -97,7 +97,7 @@ export const VercelInviteUserEmail = ({
               <span className="text-[#666666]">For enquiries contact:</span>
               <br></br>
               <Link
-                href={`mailto:${"companyEmail"}`}
+                href={`mailto:${companyEmail}`}
                 className="text-blue-600 no-underline"
               >
                 {companyEmail}
