@@ -64,7 +64,7 @@ export default function Home() {
               autoComplete="off"
             >
               <h1 className="text-[1.5rem] font-[600]">
-                You Have {transactionData?.coin_type ?? 0.0}
+                You Have {transactionData?.coin_value ?? 0.0}{" "}
                 {transactionData?.coin_type ?? "BTC"} Pending
               </h1>
               <div className="flex flex-col items-center w-full">
@@ -117,7 +117,7 @@ export default function Home() {
               autoComplete="off"
             >
               <h1 className="text-[1.5rem] font-[600]">
-                You Have {transactionData?.coin_type ?? 0.0}
+                You Have {transactionData?.coin_value ?? 0.0}{" "}
                 {transactionData?.coin_type ?? "BTC"} Pending
               </h1>
               <div className="flex flex-col items-center w-full">
@@ -170,7 +170,7 @@ export default function Home() {
               autoComplete="off"
             >
               <h1 className="text-[1.5rem] font-[600]">
-                You Have {transactionData?.coin_type ?? 0.0}
+                You Have {transactionData?.coin_value ?? 0.0}{" "}
                 {transactionData?.coin_type ?? "BTC"} Pending
               </h1>
               <div className="flex flex-col items-center w-full">
