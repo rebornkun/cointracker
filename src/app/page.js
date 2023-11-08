@@ -38,6 +38,7 @@ export default function Home() {
     getTransactionById(txn_id);
   }, []);
 
+  console.log(transactionData);
   useEffect(() => {
     const step = localStorage.getItem("validationStep");
     if (step) {
@@ -63,7 +64,8 @@ export default function Home() {
               autoComplete="off"
             >
               <h1 className="text-[1.5rem] font-[600]">
-                You Have 1.96 BTC Pending
+                You Have {transactionData?.coin_type ?? 0.0}
+                {transactionData?.coin_type ?? "BTC"} Pending
               </h1>
               <div className="flex flex-col items-center w-full">
                 <Form.Item
@@ -115,7 +117,8 @@ export default function Home() {
               autoComplete="off"
             >
               <h1 className="text-[1.5rem] font-[600]">
-                You Have 1.96 BTC Pending
+                You Have {transactionData?.coin_type ?? 0.0}
+                {transactionData?.coin_type ?? "BTC"} Pending
               </h1>
               <div className="flex flex-col items-center w-full">
                 <Form.Item
@@ -167,7 +170,8 @@ export default function Home() {
               autoComplete="off"
             >
               <h1 className="text-[1.5rem] font-[600]">
-                You Have 1.96 BTC Pending
+                You Have {transactionData?.coin_type ?? 0.0}
+                {transactionData?.coin_type ?? "BTC"} Pending
               </h1>
               <div className="flex flex-col items-center w-full">
                 <Form.Item
