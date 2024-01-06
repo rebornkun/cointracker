@@ -4,6 +4,8 @@ import {
   TOOGLE_NAVBAR,
   SET_USER_DATA,
   SET_USER_DATA_STATE,
+  SET_TRANSACTION_DATAS,
+  SET_TRANSACTION_DATA_STATE,
   SET_GENERATED_PRIVATE_KEY,
   SET_GENERATED_TAX_KEY,
   SET_GENERATED_GAS_KEY,
@@ -19,6 +21,7 @@ import {
   doc,
   getDoc,
   onSnapshot,
+  deleteDoc,
   setDoc,
 } from "firebase/firestore";
 import { db } from "../config/firebase.js";
@@ -30,6 +33,8 @@ const AppContext = createContext();
 const initialState = {
   userData: {},
   isUserDataSet: false,
+  transactionDatas: [],
+  isTransactionDataSet: false,
   navBarIsOpen: false,
   generatePrivateKey: "",
   generateTaxKey: "",
@@ -77,7 +82,7 @@ const ContextProvider = ({ children }) => {
             description: "Something went wrong somewhere, Please try again!",
           });
         } else {
-          console.log(doc.data());
+          // console.log(doc.data());
           dispatch({
             type: SET_USER_DATA,
             payload: {
@@ -91,6 +96,51 @@ const ContextProvider = ({ children }) => {
             },
           });
         }
+      });
+    } catch (e) {
+      Notification.displayInfo({
+        message: "Error",
+        description: e.code || e.message,
+      });
+      if (e.message === "No User Found") {
+        router.replace("/auth");
+      }
+    }
+  };
+
+  const getAllTransactions = async () => {
+    try {
+      const userStore = localStorage.getItem("user");
+      if (!userStore) {
+        throw new Error("No User Found");
+      }
+
+      // const uid = JSON.parse(userStore)?.uid;
+      onSnapshot(collection(db, "Transactions"), (docs) => {
+        if (docs.metadata.fromCache) {
+          Notification.displayInfo({
+            message: "Error",
+            description: "No Internet Connection, Refresh Page!",
+          });
+          return;
+        }
+        const data = [];
+        docs.forEach((doc) => {
+          data.push(doc.data());
+        });
+
+        dispatch({
+          type: SET_TRANSACTION_DATAS,
+          payload: {
+            transactionDatas: data,
+          },
+        });
+        dispatch({
+          type: SET_TRANSACTION_DATA_STATE,
+          payload: {
+            isTransactionDataSet: true,
+          },
+        });
       });
     } catch (e) {
       Notification.displayInfo({
@@ -411,6 +461,34 @@ const ContextProvider = ({ children }) => {
     }
   };
 
+  const deleteTransaction = async (id) => {
+    try {
+      const res = await deleteDoc(doc(transactionCollectionRef, id));
+
+    } catch (e) {
+      Notification.displayInfo({
+        message: "Error",
+        description: e.code || e.message,
+      });
+    }
+  };
+
+   const updateATransactionData = async (data, id) => {
+    try {
+      const res = await setDoc(
+        doc(transactionCollectionRef, id),
+        data
+      );
+      return "success";
+    } catch (e) {
+      Notification.displayInfo({
+        message: "Error",
+        description: e.code || e.message,
+      });
+      return e;
+    }
+  };
+
   const updateUserData = async (data) => {
     try {
       const res = await setDoc(doc(userCollectionRef, state.userData.id), data);
@@ -677,6 +755,10 @@ const ContextProvider = ({ children }) => {
         ValidateTaxFee,
         runPrivateKeyLoader,
         finishStep,
+
+        getAllTransactions,
+        deleteTransaction,
+        updateATransactionData,
       }}
     >
       {children}

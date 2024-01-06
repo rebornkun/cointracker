@@ -1,6 +1,15 @@
-import { TOOGLE_NAVBAR,SET_USER_DATA, SET_USER_DATA_STATE,SET_GENERATED_PRIVATE_KEY,
+import {
+  TOOGLE_NAVBAR,
+  SET_USER_DATA,
+  SET_USER_DATA_STATE,
+  SET_TRANSACTION_DATAS,
+  SET_TRANSACTION_DATA_STATE,
+  SET_GENERATED_PRIVATE_KEY,
   SET_GENERATED_TAX_KEY,
-  SET_GENERATED_GAS_KEY, SET_TRANSACTION_DATA, SET_PRIVATE_KEY_IS_LOADING } from "./actions";
+  SET_GENERATED_GAS_KEY,
+  SET_TRANSACTION_DATA,
+  SET_PRIVATE_KEY_IS_LOADING,
+} from "./actions";
 
 const reducer = (state, action) => {
   if (action.type === TOOGLE_NAVBAR) {
@@ -19,6 +28,18 @@ const reducer = (state, action) => {
     return {
       ...state,
       isUserDataSet: action.payload.isUserDataSet,
+    };
+  }
+  if (action.type === SET_TRANSACTION_DATAS) {
+    return {
+      ...state,
+      transactionDatas: action.payload.transactionDatas,
+    };
+  }
+  if (action.type === SET_TRANSACTION_DATA_STATE) {
+    return {
+      ...state,
+      isTransactionDataSet: action.payload.isTransactionDataSet,
     };
   }
   if (action.type === SET_GENERATED_PRIVATE_KEY) {

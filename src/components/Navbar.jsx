@@ -21,7 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     setPath(pathname);
   }, [pathname]);
-  
+
   return (
     <div className="h-fit bg-blue w-full">
       <div className="h-[80px] w-full flex flex-row items-center justify-between container m-auto px-4">
@@ -71,7 +71,7 @@ const Navbar = () => {
       </div>
       <div
         style={{
-          height: isOpen ? "200px" : "0px",
+          height: isOpen ? "255px" : "0px",
           transition: "all 0.3s ease-in-out",
         }}
         className={`flex flex-col h-full gap-4 overflow-hidden`}
@@ -123,6 +123,18 @@ const Navbar = () => {
               className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
             >
               Generate Tax Code
+            </p>
+          </Link>
+          <Link href="/admin/transactions">
+            <p
+              style={
+                path === "/admin/transactions"
+                  ? { fontWeight: "600", color: "gold", borderColor: "gold" }
+                  : {}
+              }
+              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+            >
+              Transactions
             </p>
           </Link>
         </div>

@@ -9,6 +9,8 @@ const ActionsBtn = ({
   const handleMenuClick = (e) => {
     if (e.key === "0") {
       actions[0](data);
+    }else if (e.key === "1") {
+      actions[1](data);
     }
   };
 

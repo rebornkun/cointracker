@@ -4,29 +4,30 @@ import Image from "next/image";
 import googlelogo from "../../../public/assets/img/google.png";
 import { Button, Checkbox, Form, Input } from "antd";
 import { auth, db } from "../../config/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Notification from "../../components/Notification";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { useState } from "react";
-import { useRouter } from 'next/navigation'
- 
+import { useRouter } from "next/navigation";
+
 const GoogleIcon = () => {
   return (
     <Image
-    className="h-[25px] w-[25px]"
-    src={googlelogo}
+      className="h-[25px] w-[25px]"
+      src={googlelogo}
       width={280}
       height={10}
-      />
-      );
-    };
-    const page = () => {
-      const [isLoading, setIsLoading] = useState(false);
-      const UsersCollectionRef = collection(db, "Users");
-      const router = useRouter()
+    />
+  );
+};
+const page = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const UsersCollectionRef = collection(db, "Users");
+  const router = useRouter();
 
   const onFinish = async (values) => {
     // console.log("Success:", values);
+
     setIsLoading(true);
     try {
       const auther = await signInWithEmailAndPassword(
@@ -34,41 +35,43 @@ const GoogleIcon = () => {
         values.email,
         values.password
       );
-      const { user } = auther;
-      //check if user is new
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        // console.log("Document data:", docSnap.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        await setDoc(doc(UsersCollectionRef, user.uid), {
-          id: user.uid,
-          email: user.email,
-          emailVerified: user.emailVerified,
-          metadata: user.reloadUserInfo,
-          isUserNew: true,
-          private_keys: [],
-          tax_codes: [],
-          gas_codes: []
-        });
+      if (getAuth().currentUser != null) {
+        // console.log(getAuth().currentUser);
+        const { user } = auther;
+        //check if user is new
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+        } else {
+          // docSnap.data() will be undefined in this case
+          await setDoc(doc(UsersCollectionRef, user.uid), {
+            id: user.uid,
+            email: user.email,
+            emailVerified: user.emailVerified,
+            metadata: user.reloadUserInfo,
+            isUserNew: true,
+            private_keys: [],
+            tax_codes: [],
+            gas_codes: [],
+          });
+        }
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ email: user.email, uid: user.uid, isLoggedIn: true })
+        );
+        localStorage.setItem("isAdmin", JSON.stringify(true));
       }
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ email: user.email, uid: user.uid, isLoggedIn: true })
-      );
-      localStorage.setItem(
-        "isAdmin",
-        JSON.stringify(true)
-      );
       Notification.displayInfo({
         message: "Success",
         description: "Logged in",
       });
-      router.replace('/admin', { scroll: false })
+      router.replace("/admin", { scroll: false });
     } catch (error) {
+      console.log(error);
       Notification.displayInfo({
         message: "Error",
         description: error.code || error.message,
