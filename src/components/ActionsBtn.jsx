@@ -11,6 +11,8 @@ const ActionsBtn = ({
       actions[0](data);
     }else if (e.key === "1") {
       actions[1](data);
+    }else if (e.key === "2") {
+      actions[2](data);
     }
   };
 

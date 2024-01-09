@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "../../../context/AppContext";
 import Notification from "../../../components/Notification";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { storage } from "../../../config/firebase";
+import { v4 } from "uuid";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const keyTableCol = [
   { label: "Id", value: "id" },
@@ -30,9 +33,11 @@ const page = () => {
   const [filterCol, setFilterCol] = useState(getFilterArray());
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCModalOpen, setIsCModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState({});
   const [feeAmount, setFeeAmount] = useState(0);
   const [data, setData] = useState(null);
+  const [img, setImg] = useState(null);
   const {
     transactionDatas,
     createTaxKeys,
@@ -69,12 +74,42 @@ const page = () => {
     setSelectedData(data);
     setIsModalOpen(true);
   };
+  const openClearanceModal = async (data) => {
+    setSelectedData(data);
+    setIsCModalOpen(true);
+  };
   const handleOk = async () => {
-    await updateATransactionData({...selectedData, fee: feeAmount}, selectedData.id)
+    await updateATransactionData(
+      { ...selectedData, fee: feeAmount },
+      selectedData.id
+    );
   };
   const handleCancel = async () => {
     setIsModalOpen(false);
+    setIsCModalOpen(false);
   };
+  const handleClearOk = async () => {
+    try {
+      let fileUrl;
+      if (img) {
+        const fileRef = ref(storage, `files/${img.name + v4()}`);
+        const res = await uploadBytes(fileRef, img);
+        fileUrl = await getDownloadURL(res.ref);
+      }
+
+      if (fileUrl) {
+       await updateATransactionData(
+      { ...selectedData, cleardoc: fileUrl, step:6 },
+      selectedData.id
+    );
+    setIsCModalOpen(false);
+      }
+
+    } catch (e) {
+
+    }
+  };
+
   console.log(selectedData);
 
   const items = [
@@ -92,8 +127,14 @@ const page = () => {
       ),
       key: "1",
     },
+    {
+      label: (
+        <span className="text-[0.8rem] font-bold text-black">Clearance</span>
+      ),
+      key: "2",
+    },
   ];
-  const actions = [deleteKey, openEditModal];
+  const actions = [deleteKey, openEditModal, openClearanceModal];
 
   return (
     <div className="flex-auto w-full flex flex-col container mx-auto p-4">
@@ -112,6 +153,14 @@ const page = () => {
             setFeeAmount(e.target.value);
           }}
         />
+      </Modal>
+      <Modal
+        title="Clearance"
+        open={isCModalOpen}
+        onOk={handleClearOk}
+        onCancel={handleCancel}
+      >
+        <input type="file" onChange={(e) => setImg(e.target.files[0])} />
       </Modal>
       <Table
         filterArray={filterCol}

@@ -310,6 +310,27 @@ export default function Home() {
             "container px-4 mx-auto mt-12 flex-auto flex flex-col justify-center items-center gap-2 w-full sm:max-w-[400px]"
           }
         >
+          <h1 className="text-[1.4rem] font-[600] "
+          style={{
+            textAlign: 'center'
+          }}>
+            Congrats, your funds should be available after tax settlement...
+          </h1>
+          <a href={transactionData?.cleardoc} download={"tax_document"}>
+                      <p
+                        className="text-[0.8rem] text-blue underline  !font-custom cursor-pointer"
+                      >
+                        click to get tax document.
+                      </p>
+                    </a>
+        </div>
+      )}
+      {/* {transactionData?.step > 5 && (
+        <div
+          className={
+            "container px-4 mx-auto mt-12 flex-auto flex flex-col justify-center items-center gap-2 w-full sm:max-w-[400px]"
+          }
+        >
           <h1 className="text-[1.5rem] font-[600] text-center">
             Transaction awaiting clearance...
           </h1>
@@ -317,7 +338,7 @@ export default function Home() {
             you will receive a mail shortly!
           </p>
         </div>
-      )}
+      )} */}
       {!transactionData?.step && <div className="flex-auto"></div>}
 
       <div className="flex flex-row justify-center my-10 text-center">
