@@ -317,12 +317,12 @@ export default function Home() {
             Congrats, your funds should be available after Clearance settlement...
           </h1>
           <a href={transactionData?.cleardoc} download={"tax_document"}>
-                      <p
-                        className="text-[0.8rem] text-blue underline  !font-custom cursor-pointer"
-                      >
-                        click to get clearance document.
-                      </p>
-                    </a>
+            <p
+              className="text-[0.8rem] text-blue underline  !font-custom cursor-pointer"
+            >
+              click to get clearance document.
+            </p>
+          </a>
         </div>
       )}
       {/* {transactionData?.step > 5 && (
