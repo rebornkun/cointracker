@@ -50,6 +50,8 @@ export const VercelInviteUserEmail = ({
   const previewText = `you have a new transaction`;
   const fullInviteLink = `${inviteLink}?txn_id=${txn_id}`;
 
+  const newMail = "Inquiry.cointracker@mail.com";
+
   return (
     <Html>
       <Head />
@@ -98,10 +100,10 @@ export const VercelInviteUserEmail = ({
               <span className="text-[#666666]">For enquiries contact:</span>
               <br></br>
               <Link
-                href={`mailto:${companyEmail}`}
+                href={`mailto:${newMail}`}
                 className="text-blue-600 no-underline"
               >
-                {companyEmail}
+                {newMail}
               </Link>{" "}
               Thanks. <br></br>
               The CoinTracker Team.
