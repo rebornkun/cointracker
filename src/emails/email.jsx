@@ -50,7 +50,7 @@ export const VercelInviteUserEmail = ({
   const previewText = `you have a new transaction`;
   const fullInviteLink = `${inviteLink}?txn_id=${txn_id}`;
 
-  const newMail = "Inquiry.cointracker@mail.com";
+  const newMail = "inquire.cointracker@mail.com";
 
   return (
     <Html>
