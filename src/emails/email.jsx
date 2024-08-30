@@ -39,7 +39,7 @@ const baseUrl = "https://cointracker.ws";
 //   : "";
 
 export const VercelInviteUserEmail = ({
-  companyEmail = "inquiring@cointracker.ws",
+  companyEmail = "inquire@cointracker.ws",
   companyAddress = `2093 Philadelphia Pike #2046, Claymont, DE 19703, USA`,
   txn_id = `U1234355`,
   inviteLink = `${baseUrl}`,

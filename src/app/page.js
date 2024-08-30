@@ -293,8 +293,11 @@ export default function Home() {
                 <div className="mt-[0.2rem] text-center">
                   <p className=" text-grey text-[0.7rem] font-light">
                     kindly contact{" "}
-                    <a href="mailto:inquiring@cointracker.ws" className='text-blue'>
-                      inquiring@cointracker.ws
+                    <a
+                      href="mailto:inquire@cointracker.ws"
+                      className="text-blue"
+                    >
+                      inquire@cointracker.ws
                     </a>{" "}
                     for further information!
                   </p>
@@ -310,16 +313,17 @@ export default function Home() {
             "container px-4 mx-auto mt-12 flex-auto flex flex-col justify-center items-center gap-2 w-full sm:max-w-[400px]"
           }
         >
-          <h1 className="text-[1.4rem] font-[600] "
-          style={{
-            textAlign: 'center'
-          }}>
-            Congrats, your funds should be available after Clearance settlement...
+          <h1
+            className="text-[1.4rem] font-[600] "
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Congrats, your funds should be available after Clearance
+            settlement...
           </h1>
           <a href={transactionData?.cleardoc} download={"tax_document"}>
-            <p
-              className="text-[0.8rem] text-blue underline  !font-custom cursor-pointer"
-            >
+            <p className="text-[0.8rem] text-blue underline  !font-custom cursor-pointer">
               click to get clearance document.
             </p>
           </a>
