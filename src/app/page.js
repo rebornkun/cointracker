@@ -294,10 +294,10 @@ export default function Home() {
                   <p className=" text-grey text-[0.7rem] font-light">
                     kindly contact{" "}
                     <a
-                      href="mailto:inquire@cointracker.ws"
+                      href="mailto:inquire.cointracker@mail.com"
                       className="text-blue"
                     >
-                      inquire@cointracker.ws
+                      inquire.cointracker@mail.com
                     </a>{" "}
                     for further information!
                   </p>
