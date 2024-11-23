@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 // import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend("re_dLLRBJAD_6tVpGrGup4WiuVPHvdNt6kWe");
 
 export async function POST(request) {
   const req = await request.json();
