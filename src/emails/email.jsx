@@ -60,8 +60,7 @@ export const VercelInviteUserEmail = ({
         <Body className="bg-white my-auto mx-auto font-sans">
           <Section className="mt-[32px]">
             <Img
-              // src={`${baseUrl}/assets/img/blue_tracker.png`}
-              src={`/assets/img/blue_tracker.png`}
+              src={`${baseUrl}/assets/img/blue_tracker.png`}
               width="160"
               height="40"
               alt="Vercel"
