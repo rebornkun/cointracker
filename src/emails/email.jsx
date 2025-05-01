@@ -33,7 +33,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-const baseUrl = "https://cointracker.ws";
+const baseUrl = "https://www.cointracker.ws";
 // const baseUrl = process.env.VERCEL_URL
 //   ? `https://${process.env.VERCEL_URL}`
 //   : "d";
