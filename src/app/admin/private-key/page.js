@@ -4,7 +4,7 @@ import Table from "../../../components/Table";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../../context/AppContext";
 import Notification from "../../../components/Notification";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const keyTableCol = [
   { label: "Created At", value: "created_at" },
@@ -24,9 +24,14 @@ const page = () => {
   const [filterCol, setFilterCol] = useState(getFilterArray());
   const [isLoading, setIsLoading] = useState(false);
   const [isBtnLoading, setIsBtnLoading] = useState(false);
-  const [generatedCode, setGeneratedCode] = useState('');
+  const [generatedCode, setGeneratedCode] = useState("");
   const [data, setData] = useState(null);
-  const { userData, createPrivateKeys, generatePrivateKey, deleteUserPrivateKey } = useAppContext();
+  const {
+    userData,
+    createPrivateKeys,
+    generatePrivateKey,
+    deleteUserPrivateKey,
+  } = useAppContext();
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,13 +50,13 @@ const page = () => {
   }, [userData]);
 
   useEffect(() => {
-    setGeneratedCode(generatePrivateKey)
-  },[generatePrivateKey])
+    setGeneratedCode(generatePrivateKey);
+  }, [generatePrivateKey]);
 
   const deleteKey = async (data) => {
-    const res = await deleteUserPrivateKey(data.key)
+    const res = await deleteUserPrivateKey(data.key);
   };
-  
+
   const items = [
     {
       label: (
@@ -67,14 +72,19 @@ const page = () => {
       <div className="flex flex-row my-6 gap-6">
         <div className="w-full flex flex-row items-center">
           <Input className="w-full" readOnly value={generatedCode} />
-          {generatedCode &&
-            <CopyToClipboard text={generatedCode} onCopy={() => {
-            Notification.displayInfo({
-        message: "Success",
-        description: 'Code Copied',
-          })
-          }}><p className='text-blue mx-4 cursor-pointer'>copy</p></CopyToClipboard>
-           }
+          {generatedCode && (
+            <CopyToClipboard
+              text={generatedCode}
+              onCopy={() => {
+                Notification.displayInfo({
+                  message: "Success",
+                  description: "Code Copied",
+                });
+              }}
+            >
+              <p className="text-purple mx-4 cursor-pointer">copy</p>
+            </CopyToClipboard>
+          )}
         </div>
         <Button
           loading={isBtnLoading}
@@ -85,7 +95,7 @@ const page = () => {
           }}
           type="primary"
           htmlType="button"
-          className="!w-[200px] bg-blue text-white"
+          className="!w-[200px] bg-black text-white focus:bg-black hover:!bg-black"
         >
           Generate Private Key
         </Button>

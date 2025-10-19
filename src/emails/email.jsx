@@ -60,7 +60,7 @@ export const VercelInviteUserEmail = ({
         <Body className="bg-white my-auto mx-auto font-sans">
           <Section className="mt-[32px]">
             <Img
-              src={`${baseUrl}/assets/img/blue_tracker.png`}
+              src={`${baseUrl}/assets/img/cointrackerTwo.png`}
               width="160"
               height="40"
               alt="Vercel"
@@ -78,7 +78,6 @@ export const VercelInviteUserEmail = ({
             <ul>
               <li>
                 <Text style={paragraph}>
-                  {" "}
                   {`Recieved ${coinAmount}${coinType} in ${coinType} Wallet ...${walletAddress.slice(
                     -12
                   )}`}
@@ -90,7 +89,7 @@ export const VercelInviteUserEmail = ({
                 pX={20}
                 pY={18}
                 style={button}
-                className="bg-[#0182ff] rounded text-[16px] font-semibold no-underline text-center"
+                className="bg-[#000000] rounded text-[16px] font-semibold no-underline text-center"
                 href={fullInviteLink}
               >
                 Connect wallets & exchanges
@@ -101,7 +100,7 @@ export const VercelInviteUserEmail = ({
               <br></br>
               <Link
                 href={`mailto:${newMail}`}
-                className="text-blue-600 no-underline"
+                className="text-purple no-underline"
               >
                 {newMail}
               </Link>{" "}
@@ -128,12 +127,9 @@ export const VercelInviteUserEmail = ({
           <Text className="text-black text-center text-[14px] leading-[24px] mx-auto">
             <span className="text-[#666666]">CoinTracker</span>
             <br></br>
-            <Link
-              href={""}
-              className="text-blue-600 no-underline mx-auto text-[14px] text-center"
-            >
+            <Text className="text-purple no-underline mx-auto text-[14px] text-center">
               {companyAddress}
-            </Link>
+            </Text>
           </Text>
           <Section></Section>
         </Body>

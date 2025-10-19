@@ -52,7 +52,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="h-full w-full flex flex-col bg-[#FFFFFF]">
       <Navbar />
       {transactionData?.step === 1 && (
         <>
@@ -98,7 +98,7 @@ export default function Home() {
                   // loading={isLoading}
                   type="primary"
                   htmlType="submit"
-                  className="w-full pro py-4 bg-blue text-white !text-[0.8rem]"
+                  className="w-full pro py-4 bg-black hover:!bg-black text-white !text-[1rem]"
                 >
                   Click Here to Proceed
                 </Button>
@@ -151,7 +151,7 @@ export default function Home() {
                   // loading={isLoading}
                   type="primary"
                   htmlType="submit"
-                  className="w-full pro py-4 bg-blue text-white !text-[0.8rem]"
+                  className="w-full pro py-4 bg-black hover:!bg-black text-white !text-[1rem]"
                 >
                   Click Here to Proceed
                 </Button>
@@ -204,7 +204,7 @@ export default function Home() {
                   // loading={isLoading}
                   type="primary"
                   htmlType="submit"
-                  className="w-full pro py-4 bg-blue text-white !text-[0.8rem]"
+                  className="w-full pro py-4 bg-black hover:!bg-black text-white !text-[1rem]"
                 >
                   Click Here to Proceed
                 </Button>
@@ -256,7 +256,7 @@ export default function Home() {
                   // loading={isLoading}
                   type="primary"
                   htmlType="submit"
-                  className="w-full pro py-4 bg-blue text-white !text-[0.8rem]"
+                  className="w-full pro py-4 bg-black hover:!bg-black text-white !text-[1rem]"
                 >
                   Click Here to Proceed
                 </Button>
@@ -288,14 +288,14 @@ export default function Home() {
                 </p>
                 <p className="mt-[0.1rem] text-black text-[0.8rem] text-light">
                   Verification process unit Cost: $
-                  {Number(transactionData?.fee).toLocaleString()}
+                  {Number(transactionData?.fee || 0).toLocaleString()}
                 </p>
                 <div className="mt-[0.2rem] text-center">
                   <p className=" text-grey text-[0.7rem] font-light">
                     kindly contact{" "}
                     <a
                       href="mailto:inquire.cointracker@mail.com"
-                      className="text-blue"
+                      className="text-purple hover:text-purple"
                     >
                       inquire.cointracker@mail.com
                     </a>{" "}
@@ -323,7 +323,7 @@ export default function Home() {
             settlement...
           </h1>
           <a href={transactionData?.cleardoc} download={"tax_document"}>
-            <p className="text-[0.8rem] text-blue underline  !font-custom cursor-pointer">
+            <p className="text-[0.8rem] text-purple underline  !font-custom cursor-pointer">
               click to get clearance document.
             </p>
           </a>

@@ -9,6 +9,7 @@ import Notification from "../../components/Notification";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CointrackerSvg from "../../components/assets/svg/CointrackerSvg";
 
 const GoogleIcon = () => {
   return (
@@ -86,15 +87,16 @@ const page = () => {
   return (
     <div className="login h-screen bg-white p-2 flex flex-col gap-10">
       <div className="mt-10 shadow flex flex-col justify-center items-center mx-auto max-w-[400px] h-fit w-full flex-auto py-4 px-8">
-        <div className="logo flex flex-col items-center gap-2">
-          <Image
+        <div className="logo flex flex-col items-center gap-4">
+          {/* <Image
             className="h-[30px] w-[130px]"
             src={
               "https://s3-us-west-1.amazonaws.com/coin-tracker-public/static/images/icons/logo_blue.svg"
             }
             width={280}
             height={10}
-          />
+          /> */}
+          <CointrackerSvg />
 
           <h1 className="text-[1.5rem] text-black font-bold">Welcome Back</h1>
         </div>
@@ -144,7 +146,7 @@ const page = () => {
               loading={isLoading}
               type="primary"
               htmlType="submit"
-              className="w-full bg-blue text-white"
+              className="w-full bg-black text-white hover:!bg-black"
             >
               Sign in
             </Button>
@@ -154,7 +156,7 @@ const page = () => {
             <p className="text-black text-light text-[0.8rem]">
               Don't have an account?
             </p>
-            <p className="text-blue text-bold text-[0.8rem] cursor-pointer">
+            <p className="text-purple text-bold text-[0.8rem] cursor-pointer">
               Get started now
             </p>
           </div>

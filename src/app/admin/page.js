@@ -10,8 +10,7 @@ import Notification from "../../components/Notification";
 
 export default function Admin() {
   const [isLoading, setIsLoading] = useState(false);
-  const { createTransaction } = useAppContext()
-  
+  const { createTransaction } = useAppContext();
 
   const generateTransactionId = () => {
     return "u" + new Date().getTime();
@@ -19,7 +18,7 @@ export default function Admin() {
   const onFinish = async (values) => {
     setIsLoading(true);
     const txn_id = generateTransactionId();
-    const createTransactionRes = await createTransaction(values, txn_id)
+    const createTransactionRes = await createTransaction(values, txn_id);
     const res = await fetch("/api/email", {
       method: "POST",
       headers: {
@@ -38,7 +37,7 @@ export default function Admin() {
     if (res.status === 200) {
       Notification.displayInfo({
         message: "Success",
-        description: 'Email Sent',
+        description: "Email Sent",
       });
     } else {
       Notification.displayInfo({
@@ -142,7 +141,7 @@ export default function Admin() {
               loading={isLoading}
               type="primary"
               htmlType="submit"
-              className="w-full bg-blue text-white"
+              className="w-full bg-black text-white hover:!bg-black"
             >
               Send Mail
             </Button>

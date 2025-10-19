@@ -7,6 +7,7 @@ import { useAppContext } from "../context/AppContext";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import CointrackerSvg from "./assets/svg/CointrackerSvg";
 
 const Navbar = () => {
   const { navBarIsOpen, toogleNavBar } = useAppContext();
@@ -23,15 +24,16 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div className="h-fit bg-blue w-full">
+    <div className="h-fit bg-white w-full">
       <div className="h-[80px] w-full flex flex-row items-center justify-between container m-auto px-4">
         <div className="logo">
-          <Image
+          {/* <Image
             className="h-[30px] w-[130px]"
             src={logo}
             width={280}
             height={10}
-          />
+          /> */}
+          <CointrackerSvg />
         </div>
 
         {/* <div className="flex flex-row justify-between items-center gap-6">
@@ -49,23 +51,23 @@ const Navbar = () => {
           </Button>
         </div> */}
         <div
-          className="w-[25px] h-[25px] py-[5px] flex flex-col items-start justify-between cursor-pointer"
+          className="w-[30px] h-[30px] py-[5px] flex flex-col items-start justify-between cursor-pointer"
           onClick={toogleNavBar}
         >
           <div
             className={`${
               isOpen ? "open" : "close"
-            } navone h-[2px] bg-white w-full`}
+            } navone h-[2px] bg-black w-full`}
           ></div>
           <div
             className={`${
               isOpen ? "open" : "close"
-            } navtwo h-[2px] max-w-[70%] bg-white w-full`}
+            } navtwo h-[2px] bg-black w-full`}
           ></div>
           <div
             className={`${
               isOpen ? "open" : "close"
-            } navthree h-[2px] bg-white w-full`}
+            } navthree h-[2px] bg-black w-full`}
           ></div>
         </div>
       </div>
@@ -74,7 +76,7 @@ const Navbar = () => {
           height: isOpen ? "255px" : "0px",
           transition: "all 0.3s ease-in-out",
         }}
-        className={`flex flex-col h-full gap-4 overflow-hidden`}
+        className={`flex flex-col h-full gap-4 overflow-hidden border-b-[2px] border-grey/10`}
       >
         <div className="w-full h-full container m-auto px-4 flex flex-col gap-2">
           <Link href="/admin">
@@ -84,7 +86,7 @@ const Navbar = () => {
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }
-              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+              className={` py-2 border-b-2 border-white text-black text-[1rem] hover:opacity-[0.8]`}
             >
               Send Email
             </p>
@@ -96,7 +98,7 @@ const Navbar = () => {
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }
-              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+              className={` py-2 border-b-2 border-white text-black text-[1rem] hover:opacity-[0.8]`}
             >
               Generate Private Key
             </p>
@@ -108,7 +110,7 @@ const Navbar = () => {
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }
-              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+              className={` py-2 border-b-2 border-white text-black text-[1rem] hover:opacity-[0.8]`}
             >
               Generate Gas Code
             </p>
@@ -120,7 +122,7 @@ const Navbar = () => {
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }
-              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+              className={` py-2 border-b-2 border-white text-black text-[1rem] hover:opacity-[0.8]`}
             >
               Generate Tax Code
             </p>
@@ -132,7 +134,7 @@ const Navbar = () => {
                   ? { fontWeight: "600", color: "gold", borderColor: "gold" }
                   : {}
               }
-              className={` py-2 border-b-2 border-white text-white text-[1rem] hover:opacity-[0.8]`}
+              className={` py-2 border-b-2 border-white text-black text-[1rem] hover:opacity-[0.8]`}
             >
               Transactions
             </p>

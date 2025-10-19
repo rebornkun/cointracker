@@ -98,16 +98,13 @@ const page = () => {
       }
 
       if (fileUrl) {
-       await updateATransactionData(
-      { ...selectedData, cleardoc: fileUrl, step:6 },
-      selectedData.id
-    );
-    setIsCModalOpen(false);
+        await updateATransactionData(
+          { ...selectedData, cleardoc: fileUrl, step: 6 },
+          selectedData.id
+        );
+        setIsCModalOpen(false);
       }
-
-    } catch (e) {
-
-    }
+    } catch (e) {}
   };
 
   console.log(selectedData);
@@ -143,6 +140,7 @@ const page = () => {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        className="editModal"
       >
         <input
           defaultValue={selectedData?.fee}

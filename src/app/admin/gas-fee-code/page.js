@@ -4,7 +4,7 @@ import Table from "../../../components/Table";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../../context/AppContext";
 import Notification from "../../../components/Notification";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const keyTableCol = [
   { label: "Created At", value: "created_at" },
@@ -24,12 +24,12 @@ const page = () => {
   const [filterCol, setFilterCol] = useState(getFilterArray());
   const [isLoading, setIsLoading] = useState(false);
   const [isBtnLoading, setIsBtnLoading] = useState(false);
-  const [generatedCode, setGeneratedCode] = useState('');
+  const [generatedCode, setGeneratedCode] = useState("");
   const [data, setData] = useState(null);
-  const { userData, 
-        createGasKeys,
-        deleteUserGasKey, generateGasKey } = useAppContext();
+  const { userData, createGasKeys, deleteUserGasKey, generateGasKey } =
+    useAppContext();
 
+  console.log(userData?.gas_codes);
   useEffect(() => {
     setIsLoading(true);
     let revampedData = [];
@@ -47,13 +47,13 @@ const page = () => {
   }, [userData]);
 
   useEffect(() => {
-    setGeneratedCode(generateGasKey)
-  },[generateGasKey])
+    setGeneratedCode(generateGasKey);
+  }, [generateGasKey]);
 
   const deleteKey = async (data) => {
-    const res = await deleteUserGasKey(data.key)
+    const res = await deleteUserGasKey(data.key);
   };
-  
+
   const items = [
     {
       label: (
@@ -69,14 +69,19 @@ const page = () => {
       <div className="flex flex-row my-6 gap-6">
         <div className="w-full flex flex-row items-center">
           <Input className="w-full" readOnly value={generatedCode} />
-          {generatedCode &&
-            <CopyToClipboard text={generatedCode} onCopy={() => {
-            Notification.displayInfo({
-        message: "Success",
-        description: 'Code Copied',
-          })
-          }}><p className='text-blue mx-4 cursor-pointer'>copy</p></CopyToClipboard>
-           }
+          {generatedCode && (
+            <CopyToClipboard
+              text={generatedCode}
+              onCopy={() => {
+                Notification.displayInfo({
+                  message: "Success",
+                  description: "Code Copied",
+                });
+              }}
+            >
+              <p className="text-purple mx-4 cursor-pointer">copy</p>
+            </CopyToClipboard>
+          )}
         </div>
         <Button
           loading={isBtnLoading}
@@ -87,7 +92,7 @@ const page = () => {
           }}
           type="primary"
           htmlType="button"
-          className="!w-[200px] bg-blue text-white"
+          className="!w-[200px] bg-black text-white focus:bg-black hover:!bg-black"
         >
           Generate Gas Key
         </Button>

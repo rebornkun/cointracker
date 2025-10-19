@@ -15,8 +15,9 @@ module.exports = {
       sm: "640px",
     },
     fontFamily: {
+      sans: ["NB International", "sans-serif"],
       inter: ["Inter", "sans-serif"],
-      custom: ["Poppins", "serif"], // Ensure fonts with spaces have " " surrounding it.
+      custom: ["NB International", "sans-serif"],
     },
     extend: {
       backgroundImage: {

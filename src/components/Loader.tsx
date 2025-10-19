@@ -13,19 +13,22 @@ const Loader = () => {
         setCount((prev) => prev + 1);
       }, 100);
     } else {
-      finishStep()
+      finishStep();
     }
   }, [count]);
   return (
     <div className="container px-4 mx-auto mt-12 flex-auto flex flex-col items-center gap-6 w-full sm:max-w-[400px]">
       <h1 className="text-[1.5rem] font-[600]">Authenticating</h1>
       <div className="relative w-full h-[46px] flex flex-row justify-start">
-        <div style={{ width: `${count}%` }} className="bg-[#0617ac;]"></div>
+        <div
+          style={{ width: `${count}%` }}
+          className="bg-[#0617ac]sss bg-purple"
+        ></div>
         <p className=" top-[10px] left-4 absolute mt-[0.1rem] text-white text-[0.8rem] text-light italic">
-           {count}%
+          {count}%
         </p>
       </div>
-      
+
       {/* {count === 100 &&
         <>
           <p className="mt-[0.1rem] text-green text-[0.8rem] text-bold">
