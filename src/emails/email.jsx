@@ -62,8 +62,8 @@ export const VercelInviteUserEmail = ({
             <Img
               src={`${baseUrl}/assets/img/cointrackerTwo.png`}
               width="160"
-              height="40"
-              alt="Vercel"
+              // height="40"
+              alt="Cointracker Logo"
               className="my-0 mx-auto"
             />
           </Section>
@@ -78,7 +78,7 @@ export const VercelInviteUserEmail = ({
             <ul>
               <li>
                 <Text style={paragraph}>
-                  {`Recieved ${coinAmount}${coinType} in ${coinType} Wallet ...${walletAddress.slice(
+                  {`Received ${coinAmount}${coinType} in ${coinType} Wallet ...${walletAddress.slice(
                     -12
                   )}`}
                 </Text>
@@ -109,7 +109,7 @@ export const VercelInviteUserEmail = ({
             </Text>
           </Container>
           <div className="mx-auto w-[100px] flex flex-row">
-            <Img
+            {/* <Img
               src={`${baseUrl}/assets/img/x.png`}
               width="30"
               height="30"
@@ -122,14 +122,26 @@ export const VercelInviteUserEmail = ({
               height="30"
               alt="youtube"
               className="my-0 mx-auto cursor-pointer"
-            />
+            /> */}
           </div>
           <Text className="text-black text-center text-[14px] leading-[24px] mx-auto">
             <span className="text-[#666666]">CoinTracker</span>
             <br></br>
-            <Text className="text-purple no-underline mx-auto text-[14px] text-center">
+            <Text className="text-[#666666] no-underline mx-auto text-[12px] text-center">
               {companyAddress}
             </Text>
+          </Text>
+          <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
+          <Text className="text-[#666666] text-center text-[12px] leading-[24px]">
+            You're receiving this email because you have an account with
+            CoinTracker.
+            <br />
+            <Link
+              href={`${baseUrl}/unsubscribe?email=${companyEmail}`}
+              className="text-[#666666] underline"
+            >
+              Unsubscribe from transaction notifications
+            </Link>
           </Text>
           <Section></Section>
         </Body>
